@@ -1,0 +1,68 @@
+conky.config = {
+
+-- Conky by Qaisar Nawaz
+-- Modified by Dean Loros
+-- Conky settings #
+	background = false,
+	update_interval = 1,
+	double_buffer = true,
+	no_buffers = true,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 1,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 1,
+
+-- Window specifications #
+	own_window = true,
+        own_window_type = 'desktop',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_title = '',
+	own_window_colour = '#2d2d2d',
+	own_window_argb_visual = true,
+	own_window_argb_value = 180,
+
+	minimum_width = 220, minimum_height = 140,
+	maximum_width = 220,
+
+-- Alignment #
+	alignment = 'top_right',
+	gap_x = 2,
+	gap_y = 537,
+
+	border_inner_margin = 4,
+	border_outer_margin = 0,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = true,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	font = 'Technical CE:bold:size=10',
+	xftalpha = 0.5,
+
+	override_utf8_locale = true,
+
+	imlib_cache_size = 0,
+
+-- Color scheme #
+	default_color = '#000000',
+	color1 = 'white',
+
+};
+
+conky.text = [[
+${font Technical CE:bold:size=12}${color}DISCS:${hr}${font}
+${goto 90}FREE:${goto 160}TOTAL:${color1}
+  Home${goto 90}${fs_free /home}${goto 160}${fs_size /home}
+  Root${goto 90}${fs_free /}${goto 160}${fs_size /}
+  EX2${goto 90}${fs_free /mnt/EX2}${goto 160}${fs_size /mnt/EX2}
+  EX2home${goto 90}${fs_free /mnt/EX2home}${goto 160}${fs_size /mnt/EX2home}
+  Storage${goto 90}${fs_free /media/Storage}${goto 160}${fs_size /media/Storage}
+]];

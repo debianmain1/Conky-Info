@@ -1,0 +1,71 @@
+conky.config = {
+
+-- Conky by Qaisar Nawaz
+-- Modified by autocrosser
+-- Conky settings #
+	background = false,
+	update_interval = 2,
+	double_buffer = true,
+	no_buffers = true,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 1,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 1,
+
+-- Window specifications #
+	own_window = true,
+        own_window_type = 'desktop',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_title = '',
+	own_window_colour = '#000000',
+	own_window_argb_visual = true,
+	own_window_argb_value = 140,
+
+	minimum_width = 220, minimum_height = 40,
+	maximum_width = 220,
+
+-- Alignment #
+	alignment = 'top_right',
+	gap_x = 2,
+	gap_y = 332,
+
+	border_inner_margin = 4,
+	border_outer_margin = 0,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = true,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	font = 'Technical CE:bold:size=10',
+	xftalpha = 0.5,
+
+	override_utf8_locale = true,
+
+	imlib_cache_size = 0,
+
+-- Color scheme #
+	default_color = '#6F6B6B',
+	color1 = 'white',
+
+};
+
+conky.text = [[
+${font Technical CE:bold:size=12}${color}CPU PROCESSES:${hr}${color1}${font}
+  ${top name 1}${goto 140}${top cpu 1}%
+  ${top name 2}${goto 140}${top cpu 2}%
+  ${top name 3}${goto 140}${top cpu 3}%
+  ${top name 4}${goto 140}${top cpu 4}%
+${color}${font Technical CE:bold:size=12}${color}MEM PROCESSES:${hr}${color1}${font}
+  ${top_mem name 1}${goto 140}${top mem 1}%
+  ${top_mem name 2}${goto 140}${top mem 2}%
+  ${top_mem name 3}${goto 140}${top mem 3}%
+  ${top_mem name 4}${goto 140}${top mem 4}%
+]];

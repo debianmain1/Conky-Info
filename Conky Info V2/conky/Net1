@@ -1,0 +1,80 @@
+conky.config = {
+
+-- Conky by Qaisar Nawaz
+-- Modified by autocrosser
+-- Conky settings #
+	background = false,
+	update_interval = 1,
+	double_buffer = true,
+	no_buffers = true,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 1,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 1,
+
+-- Window specifications #
+	own_window = true,
+        own_window_type = 'desktop',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_title = '',
+	own_window_colour = '#000000',
+	own_window_argb_visual = true,
+	own_window_argb_value = 140,
+
+	minimum_width = 220, minimum_height = 180,
+	maximum_width = 220,
+
+-- Alignment #
+	alignment = 'top_right',
+	gap_x = 2,
+	gap_y = 696,
+
+	border_inner_margin = 4,
+	border_outer_margin = 0,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = true,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	font = 'Technical CE:bold:size=10',
+	xftalpha = 0.5,
+
+	override_utf8_locale = true,
+
+	imlib_cache_size = 0,
+
+-- Color scheme #
+	default_color = '#6F6B6B',
+	color1 = 'white',
+};
+
+conky.text = [[
+${font Technical CE:bold:size=12}${color}NETWORK:${hr}${color1}${font}
+${goto 10}Down${goto 60}${voffset 5}${downspeed bond0} ${goto 120}/  ${totaldown bond0}
+${offset 10}${downspeedgraph bond0 15,200 324D23 77B753 100 -l}
+${goto 10}UP${goto 60}${voffset 5}${upspeed bond0} ${goto 120}/  ${totalup bond0}
+${offset 10}${upspeedgraph bond0 15,200 4B1B0C FF5C2B 100 -l}
+${color}${font Technical CE:bold:size=12}${color}ADDRESS:${hr}${color1}${font}${voffset 5}
+${goto 10}Wan:${goto 50}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}
+${goto 10}Lan:${goto 50}${addr bond0}
+${goto 10}Inbound Ports:${goto 140}${tcp_portmon 1 32767 count}
+${goto 10}Outbound Ports:${goto 140}${tcp_portmon 32768 61000 count}
+${color}${hr}${color1}
+${goto 10}IP:${goto 30}${tcp_portmon 1 65535 rip  0}
+${goto 30}${tcp_portmon 1 65535 rip  1}
+${goto 30}${tcp_portmon 1 65535 rip  2}
+${goto 30}${tcp_portmon 1 65535 rip  3}
+${goto 30}${tcp_portmon 1 65535 rip  4}
+${goto 30}${tcp_portmon 1 65535 rip  5}
+${goto 30}${tcp_portmon 1 65535 rip  6}
+${goto 30}${tcp_portmon 1 65535 rip  7}
+${goto 30}${tcp_portmon 1 65535 rip  8}
+]];

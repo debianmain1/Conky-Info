@@ -1,0 +1,75 @@
+conky.config = {
+
+-- Conky by Qaisar Nawaz
+-- Modified by autocrosser
+-- Conky settings #
+	background = false,
+	update_interval = 1,
+	double_buffer = true,
+	no_buffers = true,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 1,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 1,
+
+-- Window specifications #
+	own_window = true,
+        own_window_type = 'desktop',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_title = '',
+	own_window_colour = '#000000',
+	own_window_argb_visual = true,
+	own_window_argb_value = 140,
+
+	minimum_width = 220, minimum_height = 160,
+	maximum_width = 220,
+
+-- Alignment #
+	alignment = 'top_right',
+	gap_x = 2,
+	gap_y = 35,
+
+	border_inner_margin = 4,
+	border_outer_margin = 0,
+
+-- Graphics settings #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = true,
+	draw_graph_borders = false,
+
+-- Text settings #
+	use_xft = true,
+	font = 'Technical CE:bold:size=10',
+	xftalpha = 0.5,
+
+	override_utf8_locale = true,
+
+	imlib_cache_size = 0,
+
+-- Color scheme #
+	default_color = '#6F6B6B',
+	color1 = 'white',
+};
+
+conky.text = [[
+${font Technical CE:bold:size=12}${color}SYSTEM:${hr}${color1}${font}
+${exec cat /etc/issue.net}
+${exec cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-32}
+Kernel:  $kernel
+CPU Speed: ${freq_g 4}${goto 120}GHz
+${color}${hr}
+${goto 70}${color}LOAD${goto 140}TEMP${color1}
+ CPU0:${goto 70}${cpu cpu1}%${goto 140}${execi 30 sensors|grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C 
+ CPU1:${goto 70}${cpu cpu2}%${goto 140}${execi 30 sensors|grep 'Core 1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C 
+ CPU2:${goto 70}${cpu cpu3}%${goto 140}${execi 30 sensors|grep 'Core 2'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C 
+ CPU3:${goto 70}${cpu cpu4}%${goto 140}${execi 30 sensors|grep 'Core 3'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C
+${goto 70}${color}PERCENT${goto 140}TOTAL${color1} 
+ RAM:${goto 70}$memperc% ${goto 140}$memmax${color}
+${font Technical CE:bold:size=12}${color}NVIDIA:${hr}
+${font}${color1} GPU1:  ${execi 5 nvidia-settings -t -q [gpu:0]/GPUCoreTemp} °C${goto 140}GPU2:  ${execi 5 nvidia-settings -t -q [gpu:1]/GPUCoreTemp} °C
+]];
